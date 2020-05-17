@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText ed1,ed2,ed3;
+    EditText ed1,ed2;
+    TextView ed3;
     Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double savings = Double.parseDouble(ed1.getText().toString());
+                double amt;
+                double m=invest();
+                amt = (savings) * (m/100);
+                ed3.setText(String.valueOf(amt));
 
             }
         });
@@ -35,13 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        }
-        public void empsav(double d) {
-            double savings = Double.parseDouble(ed1.getText().toString());
-            double amt;
-            double m=invest();
-            amt = ((savings) * m) / 100;
-            ed3.setText(String.valueOf(amt));
         }
     public double invest() {
         double perinvest = Double.parseDouble(ed1.getText().toString());
